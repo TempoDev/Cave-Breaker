@@ -2,7 +2,7 @@
 
 A match 3 parody mobile game.
 
-## About
+## Game Concept
 
 Cave breaker is a mobile game parodying match 3 games created with godot for the EPITECH hub's projects.
 
@@ -99,20 +99,3 @@ The store is where you can buy differents items
 ![inventory](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_items.png)
 
 Your inventory, or backpack, is where you can see your items and use them.
-
-## Installing
-
-Coming soon
-
-## Built With
-
-* [Godot](https://godotengine.org/) - Game engine
-
-## Versioning
-
-Coming soon
-
-## License
-
-This project is licensed under the EPITECH license.
-Don't copy or use the content.

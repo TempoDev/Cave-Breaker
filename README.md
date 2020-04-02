@@ -10,7 +10,7 @@ The Game is divided into two big parts : The Board and the levels.
 
 ### The Board
 
-
+[Board](thumbnail_Projet 1.png)
 
 ## Installing
 

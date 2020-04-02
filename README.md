@@ -77,9 +77,9 @@ You have a limited number of nests, but you can buy some.
 
 The farm is where you can see your monsters play and... do stuff...
 But more importantly, it's where you can take care of your monsters, to make them level up or merge them.
-You can merge two identical monsters of same rank to get a monster of higher rank, but you might also want to keep two lower ranked monster in order to use them on a fight.
+You can merge two identical monsters of same rank to get a monster of higher rank, but you might also want to keep two lower ranked monster in order to use them for a fight.
 You can also get basic informations of your monsters and send them to forage items, such as food.
-You'll also have to feed them, or they might be less efficient for fight (sleep time can also do the trick).
+You'll also have to feed them, or they might be less efficient in fights (sleep time can also do the trick).
 
 ##### the bestiary
 

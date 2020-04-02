@@ -4,9 +4,9 @@ A match 3 parody mobile game.
 
 ## About
 
-Cave breaker is a mobile game parodying match 3 games created with godot under the hub's projects circumstances.
+Cave breaker is a mobile game parodying match 3 games created with godot for the EPITECH hub's projects.
 
-The game is divided in 4 parts :
+Get more informations [here](bluh.lol)
 
 
 ## Installing
@@ -23,4 +23,5 @@ Coming soon
 
 ## License
 
-This project is licensed under the EPITECH license
+This project is licensed under the EPITECH license.
+Don't copy or use the content.

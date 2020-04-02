@@ -29,10 +29,10 @@ You begin at the tile below and have to find the exit at the top of the map. You
   * the tiles you have not explored are hidden, so you can't know where it lead
   * you can see the status of a level and it's completion rank from here.
 
-You can access the menu from this screen : simply slide up from the bottom and it will appear.
+You can access the menu from this screen : simply slide up and it will appear.
 You can also see and edit your team from here (just click on it).
 
-##### Choosing you team
+##### Manage your team
 
 ![Board](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_select.png)
 
@@ -52,17 +52,17 @@ Levels are the core of the gameplay.
    * To destroy eggs, you'll have to use your monsters attacks.
    * Each monster has his own special attack, so manage your team wisely.
    * You can change monster / attack by clicking on another monster icon, beside the game board.
-   * On top of the monster icon, the number of remaining possible attack is shown : when it attain 0, it can't attack anymore.
-   * If you have no attacks remaining, you lose.
-   * You can use items from your invetory to help you.
+   * On top of the monster icon, the number of remaining possible attack is shown : when it reaches 0, it can't attack anymore.
+   * If you have no attacks left, you lose.
+   * You can use items from your inventory to help you.
    
-If you win, you can progress on the board, but if you loses, you'll get a sample of the egg you aligned into your hatchery, in order to get new monsters.
+If you win, you can progress on the board, but if you lose, you'll get a sample of the egg you aligned into your hatchery, in order to get new monsters.
 
 #### The menu
 
 ![menu](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_menu%201.png)
 
-The menu permit you to access different screen usefull to get prepared for level.
+The menu allow you to access different screen usefull to get prepared for levels.
 
 ##### the hatchery
 
@@ -85,7 +85,7 @@ You'll also have to feed them, or they might be less efficient for fight (sleep 
 
 ![bestiary](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_bestary.png)
 
-The bestiary is where you can see all the type of monster you collected. Usefull when you want to have a fast look at what you have and their powers.
+The bestiary is where you can see all the type of monsters you collected. Usefull when you want to have a fast look at what you have and their powers.
 You can also have fun "catching them all".
 
 ##### the store

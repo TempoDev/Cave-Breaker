@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/Big parts/MonsterBar.cs" type="Script" id=1]
+[ext_resource path="res://scene/objects/MonsterCase.tscn" type="PackedScene" id=2]
+
+[node name="MonsterBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterBar" type="Control" parent="."]
+anchor_left = 0.473
+anchor_top = 0.376
+anchor_right = 0.473
+anchor_bottom = 0.376
+margin_left = 9.03787
+margin_top = 416.929
+margin_right = 49.0379
+margin_bottom = 456.929
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+distance = 120
+buttonScene = ExtResource( 2 )
+
+[node name="buttons" type="Control" parent="MonsterBar"]
+anchor_left = 0.118
+anchor_top = 0.052
+anchor_right = 0.118
+anchor_bottom = 0.052
+margin_left = -4.72
+margin_top = -2.08
+margin_right = 35.28
+margin_bottom = 37.92
+__meta__ = {
+"_edit_use_anchors_": false
+}

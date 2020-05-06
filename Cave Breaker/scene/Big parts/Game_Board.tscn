@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://script/BoardGame.cs" type="Script" id=1]
+[ext_resource path="res://res/Tilesets/ts_board_rock.tres" type="TileSet" id=2]
+[ext_resource path="res://scene/objects/eggSprite.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="board" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
+script = ExtResource( 1 )
+tilesets = [ ExtResource( 2 ) ]
+eggSampleScene = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="board"]
+position = Vector2( 0, 1 )
+scale = Vector2( 3, 1.6 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="eggs" type="Node2D" parent="board"]

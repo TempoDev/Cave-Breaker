@@ -1,0 +1,6 @@
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\obj\Tools\Cave Breaker.csprojAssemblyReference.cache
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\obj\Tools\Cave Breaker.csproj.CoreCompileInputs.cache
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\bin\Tools\Cave Breaker.dll
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\bin\Tools\Cave Breaker.pdb
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\obj\Tools\Cave Breaker.dll
+C:\Users\alexl\OneDrive\Documents\Godot\Cave Breaker\.mono\temp\obj\Tools\Cave Breaker.pdb

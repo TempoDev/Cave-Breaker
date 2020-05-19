@@ -86,6 +86,7 @@ public class BoardGame : Node2D
 	private Node2D eggFolder;
 	private bool wait;
 	private Node generalData;
+	private bool secondStart = false;
 
 	/* =================================================================================================================== *
 	 *                                                  FUNCTIONS                                                          *
@@ -446,12 +447,29 @@ public class BoardGame : Node2D
 		ts = tm.TileSet;
 
 		SetBasicMap();
+	}
+
+	public void SecondStart()
+	{
+		Godot.Collections.Array switchData = (Godot.Collections.Array)generalData.Call("GetSwitchData");
+
+		LevelData ld = (LevelData)switchData[1];
+
+		if (ld.map == null)
+			SetBasicMap();
+		else
+			ChangeBoard(ld.map);
 		InitEggList();
 		Redraw();
 	}
 
 	public override void _Process(float delta)
 	{
+		if (!secondStart)
+		{
+			SecondStart();
+			secondStart = true;
+		}
 		gravity();
 		UpdateEggs();
 	}

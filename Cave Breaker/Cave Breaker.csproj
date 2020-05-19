@@ -54,10 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="scene\Big%20parts\MonsterBar.cs" />
-    <Compile Include="scene\main\gameManager.cs" />
-    <Compile Include="scene\main\general.cs" />
-    <Compile Include="scene\objects\MonsterCase.cs" />
+    <Compile Include="script\MonsterBar.cs" />
+    <Compile Include="script\gameManager.cs" />
+    <Compile Include="script\general.cs" />
+    <Compile Include="script\Map.cs" />
+    <Compile Include="script\MonsterCase.cs" />
     <Compile Include="script\EggSprite.cs" />
     <Compile Include="script\BoardGame.cs" />
     <Compile Include="script\monster.cs" />

@@ -19,6 +19,7 @@ The Game is divided into three big parts : The Board, the levels and the menu.
 
 
 ![Board](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_laby_1.png)
+![Board](https://github.com/TempoDev/Cave-Breaker/blob/doc/map.png)
 
 The board is the level selection screen. It's also where you can get all the informations you need and prepare yourself for adventure.
 
@@ -42,6 +43,7 @@ Just drag them on you team's icons to change monsters.
 #### The levels
 
 ![levels](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_board.png)
+![levels](https://github.com/TempoDev/Cave-Breaker/blob/doc/board.png)
 
 Levels are the core of the gameplay.
    * If you leave, you won't get your energy back
@@ -61,6 +63,7 @@ If you win, you can progress on the board, but if you lose, you'll get a sample 
 #### The menu
 
 ![menu](https://github.com/TempoDev/Cave-Breaker/blob/doc/thumbnail_menu%201.png)
+![menu](https://github.com/TempoDev/Cave-Breaker/blob/doc/menu%201.png)
 
 The menu allow you to access different screen usefull to get prepared for levels.
 

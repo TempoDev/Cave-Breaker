@@ -24,7 +24,14 @@ public class gameManager : Node
 	void Lose()
 	{
 		if (CheckLose())
+		{
+			int egg = (int)boardGame.Call("GetLoseID");
+			Hatchery OwnedEgg = (Hatchery)generalData.Call("GetEgg");
+
+			if (OwnedEgg.egg <= 0)
+				generalData.Call("SetEgg", egg);
 			generalData.Call("SwitchScene", general.Scene.MAP, null);
+		}
 	}
 
 	/* =================================================================================================================== *

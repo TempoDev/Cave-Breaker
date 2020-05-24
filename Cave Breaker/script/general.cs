@@ -7,6 +7,12 @@ public class MapDiscovered : Node
 	public bool discovered;
 }
 
+public class Hatchery : Node
+{
+	public int egg;
+	public DateTime start;
+}
+
 public class OwnedMonster : Node
 {
 	public Monster dataBase;
@@ -39,6 +45,7 @@ public class general : Node
 	private Godot.Collections.Array<OwnedMonster> fight_team;
 	private Godot.Collections.Array<OwnedMonster> myMonsters;
 	private Godot.Collections.Array<Godot.Collections.Array<MapDiscovered>> map = null;
+	private Hatchery hatchery;
 
 	private Node launched = null;
 
@@ -110,6 +117,11 @@ public class general : Node
 		return map[x][y];
 	}
 
+	public Hatchery GetEgg()
+	{
+		return hatchery;
+	}
+
 	/* =================================================================================================================== *
 	 *                                                      setter                                                         *
 	 * =================================================================================================================== */
@@ -126,7 +138,7 @@ public class general : Node
 
 	public void AddMonster(MonsterList.monsters monster)
 	{
-		fight_team.Add(new OwnedMonster(monster));
+		myMonsters.Add(new OwnedMonster(monster));
 	}
 
 	public void AddXp(int add)
@@ -150,6 +162,16 @@ public class general : Node
 	public void SetMapScore(int x, int y, int score)
 	{
 		map[x][y].score = score;
+	}
+
+	public void SetEgg(int id)
+	{
+		hatchery.egg = id;
+		hatchery.start = DateTime.Now;
+	}
+	public void RemoveEgg()
+	{
+		hatchery.egg = 0;
 	}
 
 	/* =================================================================================================================== *
@@ -228,8 +250,6 @@ public class general : Node
 	{
 		Bestiary[0] = true;
 		myMonsters.Add(new OwnedMonster(MonsterList.monsters.MONSTA));
-		for (int i = 0; i < 20; i++)
-			myMonsters.Add(new OwnedMonster(MonsterList.monsters.MONSTA));
 		fight_team = new Godot.Collections.Array<OwnedMonster>();
 		fight_team.Add(myMonsters[0]);
 		fight_team.Add(null);
@@ -263,9 +283,10 @@ public class general : Node
 	{
 		myMonsters = new Godot.Collections.Array<OwnedMonster>();
 		Bestiary = new bool[MonsterList.list.Length];
+		hatchery = new Hatchery();
 		for (int i = 0; i < Bestiary.Length; i++)
 			Bestiary[i] = false;
-		if (!Load())
+		//if (!Load())
 			NewGame();
 		launched = LoadScene(Scene.MAP);
 	}
@@ -273,5 +294,13 @@ public class general : Node
 	public override void _Process(float delta)
 	{
 
+	}
+
+	public override void _Notification(int what)
+	{
+		if (what == MainLoop.NotificationWmQuitRequest)
+		{
+			GetTree().Quit();
+		}
 	}
 }

@@ -87,6 +87,7 @@ public class BoardGame : Node2D
 	private bool wait;
 	private Node generalData;
 	private bool secondStart = false;
+	private int eggLoseID = -1;
 
 	/* =================================================================================================================== *
 	 *                                                  FUNCTIONS                                                          *
@@ -206,6 +207,11 @@ public class BoardGame : Node2D
 		return nb;
 	}
 
+	public int GetLoseID()
+	{
+		return eggLoseID;
+	}
+
 	//-----------------------TILES SETTER------------------//
 
 	public bool[] CheckAround(int x, int y)
@@ -293,9 +299,15 @@ public class BoardGame : Node2D
 			for (int x = 0; x < board.width; x++)
 			{
 				if (board.GetEgg(x, y) > 0 && board.GetEgg(x - 1, y) == board.GetEgg(x, y) && board.GetEgg(x + 1, y) == board.GetEgg(x, y))
+				{
+					eggLoseID = board.GetEgg(x, y);
 					return true;
+				}
 				if (board.GetEgg(x, y) > 0 && board.GetEgg(x, y - 1) == board.GetEgg(x, y) && board.GetEgg(x, y + 1) == board.GetEgg(x, y))
+				{
+					eggLoseID = board.GetEgg(x, y);
 					return true;
+				}
 			}
 		}
 		return false;

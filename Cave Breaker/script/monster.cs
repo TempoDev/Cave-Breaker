@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public enum ATTACKS { GROUNDBREAK };
+public enum ATTACKS { GROUNDBREAK, EXPLODE };
 
 public class Attack
 {
@@ -107,8 +107,10 @@ public class Monster
 public static class AttackList
 {
 
-	public enum attacks { BREAKDOWN };
-	public static Attack[] list = { new Attack(BreakDownCondition, BreakDownAttack, BreakDownOnCLick) };
+	public static Attack[] list = {
+		new Attack(BreakDownCondition, BreakDownAttack, BreakDownOnCLick),
+		new Attack(ExplodeCondition, BreakDownAttack, BreakDownOnCLick)
+	};
 
 	//breakDown
 	static bool BreakDownCondition(ref Godot.Collections.Array data, Node2D board)
@@ -141,12 +143,28 @@ public static class AttackList
 	{
 		data.Add(new Vector2(x, y));
 	}
+
+	//explode
+	static bool ExplodeCondition(ref Godot.Collections.Array data, Node2D board)
+	{
+		if (data.Count <= 0)
+			return false;
+		if (data[0].GetType().Equals(new Vector2().GetType()))
+		{
+			return true;
+		}
+		return false;
+	}
 }
 
 public static class MonsterList
 {
-	public enum monsters { MONSTA };
-	public static Monster[] list = { new Monster(ATTACKS.GROUNDBREAK, "Monsta/Monsta_action.png", "Monsta/Monsta_sleep.png", 10) };
+	public enum monsters { MONSTA, STRONG, SPOODER };
+	public static Monster[] list = {
+		new Monster(ATTACKS.GROUNDBREAK, "Monsta/Monsta_action.png", "Monsta/Monsta_sleep.png", 10),
+		new Monster(ATTACKS.GROUNDBREAK, "Monsta/Monsta_action.png", "Monsta/Monsta_sleep.png", 20),
+		new Monster(ATTACKS.EXPLODE, "Monsta/Monsta_action.png", "Monsta/Monsta_sleep.png", 3)
+	};
 
 	public static int DataToInt(Monster m)
 	{

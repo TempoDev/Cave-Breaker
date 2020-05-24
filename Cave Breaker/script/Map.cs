@@ -29,6 +29,7 @@ public class Map : Node2D
 	private Godot.Collections.Array<Godot.Collections.Array<LevelData>> level_list = null;
 
 	private bool needUpdate = true;
+	private Vector2 lastPressedPosition = new Vector2(-1, -1);
 
 	private Node generalData = null;
 	private TileMap hidden;
@@ -60,14 +61,38 @@ public class Map : Node2D
 	{
 		// 2;4 :: START
 		level_list[4][2].map = SetBoard(new int[][]{
-			new int[]{1, 2, 1},
+			new int[]{1}
+		});
+
+		// 5;4 :: 002
+		level_list[5][2].map = SetBoard(new int[][]{
+			new int[]{-1, 2, -1},
 			new int[]{2, 1, 2}
+		});
+
+		// 6;4 :: 003
+		level_list[6][2].map = SetBoard(new int[][]{
+			new int[]{0, 0, 0},
+			new int[]{0, 0, 0},
+			new int[]{0, 0, 0}
 		});
 	}
 
 	/* =================================================================================================================== *
-	 *                                                      FUNCTIONS                                                      *
+	 *                                                  GENERATE MAP                                                       *
 	 * =================================================================================================================== */
+
+	Vector2 GetMapNodeFromPosition(Vector2 pos)
+	{
+		Vector2 nodeSize = tilemap.CellSize * tilemap.Scale;
+		Vector2 id = new Vector2(-1, -1);
+		Vector2 start = new Vector2(0, offsetY * nodeSize.y);
+		Vector2 slidePos = pos - tilemap.Position + start;
+
+		id = new Vector2(width, height) - (slidePos / nodeSize);
+		id.x = slidePos.x / nodeSize.x;
+		return id;
+	}
 
 	private Godot.Collections.Array<Godot.Collections.Array<MapDiscovered>> SetGeneralMap(Godot.Collections.Array arr)
 	{
@@ -126,6 +151,28 @@ public class Map : Node2D
 		generalData.Call("SetMapData", map);
 	}
 
+	/* =================================================================================================================== *
+	 *                                                        REDRAW                                                       *
+	 * =================================================================================================================== */
+
+	void ResizeMap()
+	{
+		Vector2 new_size = new Vector2();
+		Vector2 screen_size = OS.WindowSize;
+		Vector2 tile_size = tilemap.TileSet.TileGetRegion(0).Size;
+		new_size = screen_size / new Vector2(width, height);
+		new_size = new_size / tile_size;
+		new_size.y = new_size.x;
+
+		tilemap.Scale = new_size * 2;
+		hidden.Scale = new_size * 2;
+	}
+
+	private void Redraw()
+	{
+		ResizeMap();
+	}
+
 	private void UpdateMapDisplay()
 	{
 		for (int y = 0; y < height; y++)
@@ -163,30 +210,40 @@ public class Map : Node2D
 		needUpdate = false;
 	}
 
-	Vector2 GetMapNodeFromPosition(Vector2 pos)
-	{
-		Vector2 nodeSize = tilemap.CellSize * tilemap.Scale;
-		Vector2 id = new Vector2(-1, -1);
-		Vector2 start = new Vector2(0, offsetY * nodeSize.y);
-		Vector2 slidePos = pos + tilemap.Position + start;
-
-		id = new Vector2(width, height) - (slidePos / nodeSize);
-		id.x = slidePos.x / nodeSize.x;
-		return id;
-	}
-
 	/* =================================================================================================================== *
 	 *                                                   MAIN FUNCTIONS                                                    *
 	 * =================================================================================================================== */
 
 	public override void _Input(InputEvent inputEvent)
 	{
+		if (inputEvent is InputEventScreenDrag dragEvent)
+		{
+			Vector2 pos = dragEvent.Relative;
+
+			tilemap.Position += new Vector2(tilemap.Position.x, pos.y);
+			hidden.Position += new Vector2(hidden.Position.x, pos.y);
+
+			if (tilemap.Position.y + pos.y < 0)
+			{
+				tilemap.Position = new Vector2(tilemap.Position.x, 0);
+				hidden.Position = new Vector2(hidden.Position.x, 0);
+			}
+
+		}
 		if (inputEvent is InputEventScreenTouch touchEvent)
 		{
 			if (touchEvent.Pressed)
 			{
+				lastPressedPosition = touchEvent.Position;
+			} else {
 				Vector2 pos = touchEvent.Position;
 				Vector2 id = GetMapNodeFromPosition(pos);
+
+				Vector2 testID = GetMapNodeFromPosition(lastPressedPosition);
+				if ((int)id.x != (int)testID.x || (int)id.y != (int)testID.y)
+					return;
+				if ((int)id.x < 0 || (int)id.x >= width || (int)id.y < 0 || (int)id.y >= height)
+					return;
 
 				GD.Print(tilemap.GetCell((int)id.x, (int)(-id.y + offsetY)));
 				if (map[(int)id.y][(int)id.x].discovered || hidden.GetCell((int)id.x, (int)(-id.y + offsetY)) == CELL_AVAIBLE)
@@ -214,5 +271,6 @@ public class Map : Node2D
 	{
 		if (needUpdate)
 			UpdateMapDisplay();
+		Redraw();
 	}
 }

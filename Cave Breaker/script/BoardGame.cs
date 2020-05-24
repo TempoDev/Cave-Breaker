@@ -358,6 +358,23 @@ public class BoardGame : Node2D
 		return eggSample;
 	}
 
+	private void RandomizeBoard(int[] eggList)
+	{
+		Godot.RandomNumberGenerator rng = new RandomNumberGenerator();
+		rng.Randomize();
+
+		for (int y = 0; y < board.height; y++)
+		{
+			for (int x = 0; x < board.width; x++)
+			{
+				while (board.map[y][x] == 0 || CheckAlignement())
+				{
+					board.map[y][x] = eggList[rng.RandiRange(0, eggList.Length - 1)];
+				}
+			}
+		}
+	}
+
 	void InitEggList()
 	{
 		eggList = new Godot.Collections.Array<Godot.Collections.Array<Node2D>>();
@@ -428,8 +445,7 @@ public class BoardGame : Node2D
 	void SetBasicMap()
 	{
 		int[][] newBoard = new int[][]{
-			new int[]{-1, 2, -1},
-			new int[]{2, 1, 2}
+			new int[]{1}
 		};
 		ChangeBoard(newBoard);
 	}
@@ -458,7 +474,10 @@ public class BoardGame : Node2D
 		if (ld.map == null)
 			SetBasicMap();
 		else
+		{
 			ChangeBoard(ld.map);
+			RandomizeBoard(new int[] {1, 2, 3});
+		}
 		InitEggList();
 		Redraw();
 	}

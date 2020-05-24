@@ -54,6 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="script\MyMonsterCase.cs" />
+    <Compile Include="script\BestiaryScene.cs" />
+    <Compile Include="script\FarmScene.cs" />
+    <Compile Include="script\HatcheryScene.cs" />
+    <Compile Include="script\MonsterListBlock.cs" />
+    <Compile Include="script\MonsterTeam.cs" />
+    <Compile Include="script\MapMenu.cs" />
     <Compile Include="script\MonsterBar.cs" />
     <Compile Include="script\gameManager.cs" />
     <Compile Include="script\general.cs" />

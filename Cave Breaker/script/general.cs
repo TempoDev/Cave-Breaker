@@ -30,7 +30,7 @@ public class OwnedMonster : Node
 
 public class general : Node
 {
-	public enum Scene {MAP, GAME, BESTIARY_BOOK, HATCHERY};
+	public enum Scene {MAP, GAME, HATCHERY, FARM, BESTIARY_BOOK, STORE, INVENTORY};
 	[Export] Godot.Collections.Array<PackedScene> scenes;
 
 	private int level = 1;
@@ -83,6 +83,11 @@ public class general : Node
 	public Godot.Collections.Array<OwnedMonster> GetMyMonsters()
 	{
 		return myMonsters;
+	}
+
+	public OwnedMonster GetMyMonstersAt(int i)
+	{
+		return myMonsters[i];
 	}
 
 	public bool[] GetBestiary()
@@ -223,8 +228,12 @@ public class general : Node
 	{
 		Bestiary[0] = true;
 		myMonsters.Add(new OwnedMonster(MonsterList.monsters.MONSTA));
+		for (int i = 0; i < 20; i++)
+			myMonsters.Add(new OwnedMonster(MonsterList.monsters.MONSTA));
 		fight_team = new Godot.Collections.Array<OwnedMonster>();
 		fight_team.Add(myMonsters[0]);
+		fight_team.Add(null);
+		fight_team.Add(null);
 	}
 
 	public void SwitchScene(Scene newScene, Godot.Collections.Array data)

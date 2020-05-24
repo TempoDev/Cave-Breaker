@@ -15,7 +15,8 @@ public class MonsterCase : Control
 	public void SetMonster(OwnedMonster newm)
 	{
 		monster = newm;
-		remaining = monster.dataBase.GetMoveQuantity();
+		if (monster != null)
+			remaining = monster.dataBase.GetMoveQuantity();
 	}
 	public void SetActive(bool activate)
 	{
@@ -66,7 +67,10 @@ public class MonsterCase : Control
 
 	private void UpdateLabel()
 	{
-		label.Text = remaining.ToString();
+		if (monster == null)
+			label.Text = "";
+		else
+			label.Text = remaining.ToString();
 	}
 
 	public override void _Ready()
